@@ -5,7 +5,6 @@ class HospitalAppointment(models.Model):
     _name = 'hospital.appointment'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Hospital Appointment'
-    _rec_name = 'ref'
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True)
     gender = fields.Selection(related='patient_id.gender', readonly=False)
     ref = fields.Char('Reference', required=True, tracking=True)
@@ -23,18 +22,24 @@ class HospitalAppointment(models.Model):
         ('draft', 'Draft'),
         ('in_consultation', 'In Consultation'),
         ('done', 'Done'),
-        ('cancel', 'Canceled')], string="Status", tracking=True)
+        ('cancel', 'Canceled')], string="Status", tracking=True, default='draft')
 
-    def __str__(self):
-        print(self)
-        return f"{self.patient_id.name}'s appointment"
+    def name_get(self):
+        result = []
+        for ap in self:
+            name = f"{ap.patient_id}"
+            result.append((ap.id, name))
+        return result
 
     @api.onchange('patient_id')
     def _onchange_patient_id(self):
         self.ref = self.patient_id.ref
 
     def action_do_cancel(self):
-        self.write({'state': 'cancel'})
+        action = self.env.ref('om_hospital.action_cancel_hospital_appointments')
+        return action
+        # self.write({'state': 'cancel'})
+
 
     def action_do_done(self):
         self.write({'state': 'done'})

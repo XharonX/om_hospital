@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <form string="">
         <header>
-          <button name="action_do_cancel" type="object" string="Cancel" states="draft,in_consultation" class="bg-danger"/>
+          <button name="%(om_hospital.action_cancel_hospital_appointments)d" type="action" string="Cancel" states="draft,in_consultation" class="bg-danger"/>
           <button name="action_do_consultation" type="object" string="In Consultation" states="draft" class="oe_highlight"/>
           <button name="action_do_done" type="object" string="Done" states="in_consultation" class="oe_highlight bg-success"/>
           <field name="state" widget="statusbar" statusbar_visible="draft,in_consultation,done" nolabel="1" readonly="1" />
