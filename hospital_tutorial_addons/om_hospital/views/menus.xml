@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="menu_hospital_root" name="Hospital" web_icon="om_hospital,static/description/hospital_management.png" sequence="0"/>
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="menu_patient_master" name="Patient Detail" parent="menu_hospital_root"  sequence="0"/>
     <!-- This Menu Item Must have a parent -->
     <menuitem id="menu_patient" name="Patients" parent="menu_patient_master" action="action_hospital_patient" sequence="0"/>
-  </data>
+    <menuitem id="menu_appointment" name="Appointments" parent="menu_hospital_root" action="action_hospital_appointments" sequence="1"/>
+    <menuitem id="menu_patient_configurations" name="Configurations" parent="menu_hospital_root" sequence="2"/>
+    <menuitem id="menu_configuration_tags" name="Tag" parent="menu_patient_configurations" action="action_hospital_patient_tags" sequence="2"/>
 </odoo>

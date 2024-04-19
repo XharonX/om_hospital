@@ -8,6 +8,7 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char('Name', required=True)
+    image = fields.Image()
     active = fields.Boolean('Active', default=True)
     ref = fields.Char('Reference', required=True, tracking=True)
     age = fields.Integer(compute='_get_age')
@@ -23,6 +24,8 @@ class HospitalPatient(models.Model):
     ], required=True)
     conditions = fields.Char("Medical Condition", tracking=True)
     description = fields.Text("Description")
+    tag_ids = fields.Many2many('patient.tag', )
+    # appointment_id = fields.Many2one('hospital.appointment', 'Appointments')
 
     def __str__(self):
         return f"{self.name} + ({self.ref})"

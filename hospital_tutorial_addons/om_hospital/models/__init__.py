@@ -1,2 +1,1 @@
-from . import patient
-from . import appointment
+from . import patient, appointment, patient_tags

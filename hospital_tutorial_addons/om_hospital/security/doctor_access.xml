@@ -1,0 +1,10 @@
+<!--<record id="doctor_group_user" model="res.groups">-->
+<!--    <field name="name">Doctor</field>-->
+<!--    <field name="category_id" ref="base.module_category_hospital"/>-->
+<!--    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--</record>-->
+<!--<record id="nurse_group_user" model="res.groups">-->
+<!--    <field name="name">Nurse</field>-->
+<!--    <field name="category_id" ref="base.module_category_hospital"/>-->
+<!--    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--</record>-->
